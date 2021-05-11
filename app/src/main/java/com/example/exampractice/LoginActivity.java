@@ -2,11 +2,13 @@ package com.example.exampractice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,7 +27,17 @@ public class LoginActivity extends AppCompatActivity {
         loginB = findViewById(R.id.loginB);
 
         forgotPassB = findViewById(R.id.forgot_pass);
-        signupB = findViewById(R.id.signupB);
+        signupB = findViewById(R.id.signUpB);
+
+        signupB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this,"Passwords do no match", Toast.LENGTH_SHORT);
+
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
 
         loginB.setOnClickListener(new View.OnClickListener() {
             @Override

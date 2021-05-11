@@ -23,6 +23,7 @@
 
         <ImageView
             android:layout_width="120dp"
+            android:paddingTop="20dp"
             android:layout_height="110dp"
             android:src="@drawable/app_logo" />
 
@@ -128,7 +129,7 @@
         app:layout_constraintTop_toBottomOf="@+id/loginB" />
 
     <TextView
-        android:id="@+id/signupB"
+        android:id="@+id/signUpB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
