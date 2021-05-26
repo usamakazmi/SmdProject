@@ -1,10 +1,13 @@
 package com.example.exampractice;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -31,7 +34,7 @@ public class CategoryAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View myView;
 
         if (convertView == null)
@@ -42,6 +45,19 @@ public class CategoryAdapter extends BaseAdapter {
         {
             myView = convertView;
         }
+
+
+        myView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DbQuery.g_selected_cat_index = position;
+
+                Intent intent = new Intent(v.getContext(), TestActivity.class);
+
+                v.getContext().startActivity(intent);
+            }
+        });
 
         TextView catName = myView.findViewById(R.id.catName);
         TextView noOfTests = myView.findViewById(R.id.no_of_tests);

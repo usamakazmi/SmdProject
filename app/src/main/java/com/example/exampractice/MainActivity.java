@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private FrameLayout main_frame;
 
+    private TextView drawerProfileName, drawerProfileText;
+
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -36,14 +39,19 @@ public class MainActivity extends AppCompatActivity {
                    {
                        case R.id.nav_home:
                            setFragment(new CategoryFragment());
+                           //bottomNavigationView.setSelectedItemId(R.id.nav_home);
                            return true;
 
                        case R.id.nav_leaderboard:
                            setFragment(new LeaderboardFragment());
+                           //bottomNavigationView.setSelectedItemId(R.id.nav_leaderboard);
+
                            return true;
 
                        case R.id.nav_account:
                            setFragment(new AccountFragment());
+                           //bottomNavigationView.setSelectedItemId(R.id.nav_account);
+
                            return true;
 
 
@@ -65,10 +73,19 @@ public class MainActivity extends AppCompatActivity {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+        drawerProfileName = navigationView.getHeaderView(0).findViewById(R.id.nav_drawer_name);
+        drawerProfileText = navigationView.getHeaderView(0).findViewById(R.id.nav_drawer_text_img);
+
+        String name = DbQuery.myProfile.getName();
+        drawerProfileName.setText(name);
+
+        drawerProfileText.setText(name.toUpperCase().substring(0,1));
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_account, R.id.nav_leaderboard)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -97,4 +114,6 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(main_frame.getId(), fragment);
         transaction.commit();
     }
+
+
 }

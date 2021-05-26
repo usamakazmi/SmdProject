@@ -11,9 +11,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class SplashActivity extends AppCompatActivity {
 
     private TextView appName;
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +34,9 @@ public class SplashActivity extends AppCompatActivity {
 
         appName.setAnimation(anim);
 
+        mAuth = FirebaseAuth.getInstance();
+
+        DbQuery.g_firestore = FirebaseFirestore.getInstance();
 
         new  Thread()
         {
@@ -40,9 +48,33 @@ public class SplashActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+
+                if (mAuth.getCurrentUser() != null)
+                {
+                    DbQuery.loadData(new MyCompleteListener(){
+                        @Override
+                        void onSuccess() {
+                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+
+                        @Override
+                        void onFailure() {
+                            Toast.makeText(SplashActivity.this, "Something went wrong please try again later",
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+                }
+                else
+                {
+                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         }.start();
 
