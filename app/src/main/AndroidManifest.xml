@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamPractice">
-        <activity android:name=".StartTestActivity"></activity>
+        <activity android:name=".ScoreActivity" />
+        <activity android:name=".StartTestActivity" />
         <activity android:name=".QuestionsActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".SignUpActivity" />

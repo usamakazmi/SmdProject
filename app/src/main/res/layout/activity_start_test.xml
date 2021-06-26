@@ -235,7 +235,7 @@
         android:textColor="@color/white"
         android:textSize="22sp"
         android:translationZ="3dp"
-        app:backgroundTint="#1E90FF"
+        app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

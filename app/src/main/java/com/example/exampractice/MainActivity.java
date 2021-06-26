@@ -3,13 +3,17 @@ package com.example.exampractice;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.example.exampractice.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -22,14 +26,16 @@ import androidx.navigation.ui.NavigationUI;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.sql.Statement;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
     private BottomNavigationView bottomNavigationView;
     private FrameLayout main_frame;
-
-    private TextView drawerProfileName, drawerProfileText;
+    private Button nav_h, nav_m, nav_l;
+    private TextView drawerProfileName, drawerProfileText, drawerProfileEmail;
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -39,18 +45,18 @@ public class MainActivity extends AppCompatActivity {
                    {
                        case R.id.nav_home:
                            setFragment(new CategoryFragment());
-                           //bottomNavigationView.setSelectedItemId(R.id.nav_home);
+                           //bottomNavigationView.setSelectedItemId(R.id.navigation_home);
                            return true;
 
                        case R.id.nav_leaderboard:
                            setFragment(new LeaderboardFragment());
-                           //bottomNavigationView.setSelectedItemId(R.id.nav_leaderboard);
+                           //bottomNavigationView.setSelectedItemId(R.id.navigation_leaderboard);
 
                            return true;
 
                        case R.id.nav_account:
                            setFragment(new AccountFragment());
-                           //bottomNavigationView.setSelectedItemId(R.id.nav_account);
+                           //bottomNavigationView.setSelectedItemId(R.id.navigation_account);
 
                            return true;
 
@@ -76,7 +82,36 @@ public class MainActivity extends AppCompatActivity {
 
         drawerProfileName = navigationView.getHeaderView(0).findViewById(R.id.nav_drawer_name);
         drawerProfileText = navigationView.getHeaderView(0).findViewById(R.id.nav_drawer_text_img);
+        drawerProfileEmail = navigationView.getHeaderView(0).findViewById(R.id.nav_drawer_email);
 
+        String email = DbQuery.myProfile.getEmail();
+        //String email = DbQuery.myProfile.getName();
+        drawerProfileEmail.setText(email);
+
+        nav_m = navigationView.getHeaderView(0).findViewById(R.id.nav_m);
+        nav_m.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragment(new AccountFragment());
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+        nav_h = navigationView.getHeaderView(0).findViewById(R.id.nav_h);
+        nav_h.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragment(new CategoryFragment());
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+        nav_l = navigationView.getHeaderView(0).findViewById(R.id.nav_l);
+        nav_l.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragment(new LeaderboardFragment());
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
         String name = DbQuery.myProfile.getName();
         drawerProfileName.setText(name);
 
@@ -114,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(main_frame.getId(), fragment);
         transaction.commit();
     }
+
 
 
 }

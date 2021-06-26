@@ -24,7 +24,8 @@
         android:translationZ="3dp" />
 
     <Button
-        android:id="@+id/optionA"
+
+        android:id="@+id/optionAA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -33,12 +34,12 @@
         android:stateListAnimator="@null"
         android:text="Option A"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:translationZ="3dp"
-        app:backgroundTint="#FFFFFF" />
+        app:backgroundTint="@null"     />
 
     <Button
-        android:id="@+id/optionB"
+        android:id="@+id/optionBB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -47,11 +48,11 @@
         android:stateListAnimator="@null"
         android:text="Option B"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:translationZ="3dp"
-        app:backgroundTint="#FFFFFF" />
+        app:backgroundTint="@null"    />
     <Button
-        android:id="@+id/optionC"
+        android:id="@+id/optionCC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -60,23 +61,24 @@
         android:stateListAnimator="@null"
         android:text="Option C"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:translationZ="3dp"
-        app:backgroundTint="#FFFFFF" />
+        app:backgroundTint="@null"     />
 
     <Button
-        android:id="@+id/optionD"
+        android:id="@+id/optionDD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        app:backgroundTint="@null"
         android:background="@drawable/unselected_btn"
         android:elevation="3dp"
         android:stateListAnimator="@null"
         android:text="Option D"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:translationZ="3dp"
-        app:backgroundTint="#FFFFFF" />
+         />
 
 
 </LinearLayout>

@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
         android:title="Home"
+        app:iconTint="@color/mtrl_bottom_nav_item_tint"
+        app:itemTextColor="@color/mtrl_bottom_nav_item_tint"
         />
     <item
         android:id="@+id/nav_leaderboard"
         android:icon="@drawable/ic_leaderboard"
         android:title="Leaderboard"
+        app:iconTint="@color/mtrl_bottom_nav_item_tint"
+        app:itemTextColor="@color/mtrl_bottom_nav_item_tint"
+
         />
     <item
         android:id="@+id/nav_account"
         android:icon="@drawable/ic_account"
         android:title="My Account"
+        app:iconTint="@color/mtrl_bottom_nav_item_tint"
+        app:itemTextColor="@color/mtrl_bottom_nav_item_tint"
+
         />
 
 </menu>
